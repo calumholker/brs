@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Edit(.claude/**)",
+      "Write(.claude/**)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "Bash(codex exec:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": []
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(echo \"$TOOL_INPUT\" | jq -r '.command // empty'); if echo \"$cmd\" | grep -qE 'git push|vercel deploy|gh-pages'; then echo 'REMINDER: a push/deploy was detected. Per CLAUDE.md, remote/deploy operations require explicit user authorisation. Confirm this is intentional.' >&2; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=$(echo \"$TOOL_INPUT\" | jq -r '.file_path // empty'); case \"$file\" in *.ts|*.tsx|*.js|*.jsx|*.css|*.json|*.html) if [ -f package.json ] && [ -x node_modules/.bin/prettier ]; then node_modules/.bin/prettier --write \"$file\" >/dev/null 2>&1; fi;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}
