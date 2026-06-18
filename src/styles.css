@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #f7fee7;
+  background: #10130f;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.dial-needle {
+  transition: transform 80ms linear;
+  transform-box: view-box;
+  transform-origin: center center;
+}
+
+.idle-wiggle {
+  animation: idle-wiggle 2.8s ease-in-out infinite;
+}
+
+.result-slam {
+  animation: result-slam 520ms cubic-bezier(0.2, 1.5, 0.34, 1) both;
+}
+
+.emoji-pop {
+  animation: emoji-pop 560ms cubic-bezier(0.17, 1.4, 0.36, 1) both;
+}
+
+.screen-shake {
+  animation: screen-shake 450ms ease-in-out both;
+}
+
+.dial-wobble {
+  animation: dial-wobble 780ms ease-in-out infinite;
+}
+
+@keyframes idle-wiggle {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  90% {
+    transform: rotate(-1.5deg) scale(1.015);
+  }
+  95% {
+    transform: rotate(1.5deg) scale(1.015);
+  }
+}
+
+@keyframes result-slam {
+  0% {
+    opacity: 0;
+    transform: translateY(-22px) scale(1.35);
+  }
+  62% {
+    opacity: 1;
+    transform: translateY(4px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes emoji-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-18deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.18) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes screen-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  14% {
+    transform: translateX(-8px) rotate(-0.5deg);
+  }
+  28% {
+    transform: translateX(7px) rotate(0.45deg);
+  }
+  42% {
+    transform: translateX(-6px) rotate(-0.35deg);
+  }
+  56% {
+    transform: translateX(5px) rotate(0.25deg);
+  }
+  70% {
+    transform: translateX(-3px);
+  }
+  84% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes dial-wobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-0.8deg);
+  }
+  66% {
+    transform: rotate(0.8deg);
+  }
+}

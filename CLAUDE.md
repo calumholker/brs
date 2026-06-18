@@ -5,12 +5,12 @@ magnitude scale, with an animated gauge, peak-hold, a local leaderboard, and a s
 result. Built to be opened from a phone and shown to a friend. `AGENTS.md` symlinks here
 so Codex reads the same spec.
 
-**Status:** harness only — the app is built by running `/oneshot` (see below). When the app
-exists, update this file's *Stack* and *Commands* to match what was actually built.
+**Status:** scaffolded and implemented as a one-screen Vite app.
 
 ## How this project gets built
 
-You describe it once; one skill loops autonomously to production. **No interview.**
+The current app was scaffolded and implemented directly from the PRD. For future larger changes,
+use the existing `/oneshot` or `/implement` harness. **No interview.**
 
 ```
 /oneshot "<one-paragraph description of the burp richter app you want>"
@@ -21,12 +21,12 @@ user questions) → scaffolds → dispatches code generation to **Codex** → ve
 Playwright on a mobile viewport → loops fix→verify until the Definition of Done is met →
 deploys to an HTTPS URL you can open on your phone. For a single feature use `/implement`.
 
-## Stack (decided — the oneshot targets this)
+## Stack
 
-- **Vite + React + TypeScript + Tailwind**, mobile-first (target 320–430 px).
+- **Vite + React 18 + TypeScript + Tailwind**, mobile-first (target 320–430 px).
 - **Web Audio API** (`getUserMedia` + `AnalyserNode`) for mic loudness → mapped to a playful
   "burp magnitude". Must degrade gracefully when the mic is denied/unsupported.
-- **PWA** (installable, offline shell) via `vite-plugin-pwa` — nice-to-have, not blocking.
+- **PWA** remains nice-to-have, not currently included.
 - **Deploy: GitHub Pages** over HTTPS (mic access *requires* HTTPS on a phone — `localhost`
   is exempt but a phone on the LAN is not). Vercel is the documented alternative.
 
@@ -40,7 +40,7 @@ deploys to an HTTPS URL you can open on your phone. For a single feature use `/i
 - **Verification → Playwright** (mobile-emulated, fake mic stream). Definition of Done lives in
   `.claude/skills/_shared/definition-of-done.md`.
 
-## Commands (once the app is scaffolded)
+## Commands
 
 ```bash
 npm install            # deps
