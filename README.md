@@ -3,7 +3,7 @@
 A fun mobile web app: burp into your phone and see how big it registers on a Richter-style
 magnitude scale — animated gauge, peak-hold, a local leaderboard, and a shareable result.
 
-> **Status:** app scaffolded and implemented. Live URL appears here after `/ship`.
+> **Live:** **https://calumholker.github.io/brs/** — open it on a phone (HTTPS, so the mic works).
 
 ## Local development
 
