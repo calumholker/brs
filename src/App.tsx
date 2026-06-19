@@ -261,10 +261,27 @@ function RichterDial({
         </g>
         <circle cx="0" cy="0" r="18" fill="#1a2015" stroke="#d9f99d" strokeWidth="5" />
 
-        <text x="0" y="52" fill="#f7fee7" fontSize="42" fontWeight="900" textAnchor="middle">
+        <text
+          x="0"
+          y="72"
+          fill="#f7fee7"
+          fontSize="44"
+          fontWeight="900"
+          textAnchor="middle"
+          dominantBaseline="middle"
+        >
           {magnitude.toFixed(1)}
         </text>
-        <text x="0" y="78" fill="#a3b18a" fontSize="14" fontWeight="700" textAnchor="middle">
+        <text
+          x="0"
+          y="100"
+          fill="#a3b18a"
+          fontSize="11"
+          fontWeight="700"
+          letterSpacing="2.5"
+          textAnchor="middle"
+          dominantBaseline="middle"
+        >
           LIVE MAGNITUDE
         </text>
       </svg>
